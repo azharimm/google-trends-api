@@ -70,7 +70,17 @@ exports.realtime = async (req, res) => {
         }
     );
 };
-exports.relatedQueries = async (req, res) => {};
+exports.relatedQueries = async (req, res) => {
+    try {
+        const data = req.body;
+        const response = await googleTrends.relatedQueries({
+            keyword: data.keyword,
+        });
+        return resultJson(res, response);
+    } catch (error) {
+        return errResponse(res, error);
+    }
+};
 exports.relatedTopics = async (req, res) => {};
 
 const resultJson = (res, response) => {

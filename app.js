@@ -17,15 +17,6 @@ app.get("/", (req, res) => {
 
 app.use('/trend', trendRoute);
 
-app.get("/related-queries", async (req, res) => {
-    const response = await googleTrends.relatedQueries({
-        keyword: "Westminster Dog Show",
-    });
-    return res.json({
-        data: JSON.parse(response),
-    });
-});
-
 app.get("/related-topics", async (req, res) => {
     const response = await googleTrends.relatedTopics({
 		keyword: "Westminster Dog Show",
