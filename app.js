@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     return res.json({
 		data: "Google Trend API Wrapper",
-		docs: ""
+		docs: "https://github.com/azharimm/google-trends-api"
 	});
 });
 

@@ -3,7 +3,7 @@ const googleTrends = require("google-trends-api");
 exports.index = (req, res) => {
     return res.json({
 		data: "Google Trend API Wrapper",
-		docs: ""
+		docs: "https://github.com/azharimm/google-trends-api"
 	});
 }
 exports.timeline = async (req, res) => {
