@@ -9,3 +9,5 @@ router.post('/region', trendController.region);
 router.post('/realtime', trendController.realtime);
 router.post('/related-queries', trendController.relatedQueries);
 router.post('/related-topics', trendController.relatedTopics);
+
+module.exports = router;
