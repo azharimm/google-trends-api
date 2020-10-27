@@ -12,19 +12,10 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-	return res.send(":)");
+	return res.send("Google Trend API Wrapper");
 });
 
 app.use('/trend', trendRoute);
-
-app.get("/autocomplete", async (req, res) => {
-    const response = await googleTrends.autoComplete({
-        keyword: "Back to School",
-    });
-    return res.json({
-        data: JSON.parse(response),
-    });
-});
 
 app.get("/region", async (req, res) => {
     const response = await googleTrends.interestByRegion({

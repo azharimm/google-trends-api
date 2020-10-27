@@ -29,7 +29,17 @@ exports.daily = async (req, res) => {
         }
     );
 };
-exports.autocomplete = async (req, res) => {};
+exports.autocomplete = async (req, res) => {
+    try {
+        const data = req.body;
+        const response = await googleTrends.autoComplete({
+            keyword: data.keyword,
+        });
+        return resultJson(res, response);
+    } catch (error) {
+        return errResponse(res, error);
+    }
+};
 exports.region = async (req, res) => {};
 exports.realtime = async (req, res) => {};
 exports.relatedQueries = async (req, res) => {};
