@@ -13,7 +13,22 @@ exports.timeline = async (req, res) => {
         return errResponse(res, error);
     }
 };
-exports.daily = async (req, res) => {};
+exports.daily = async (req, res) => {
+    const data = req.body;
+    googleTrends.dailyTrends(
+        {
+            trendDate: new Date(data.date),
+            geo: data.geo,
+        },
+        function (error, response) {
+            if (error) {
+                return errResponse(res, error);
+            } else {
+                return resultJson(res, response);
+            }
+        }
+    );
+};
 exports.autocomplete = async (req, res) => {};
 exports.region = async (req, res) => {};
 exports.realtime = async (req, res) => {};

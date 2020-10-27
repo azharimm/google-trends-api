@@ -26,24 +26,6 @@ app.get("/autocomplete", async (req, res) => {
     });
 });
 
-app.get("/daily", (req, res) => {
-    googleTrends.dailyTrends(
-        {
-            trendDate: new Date("2020-10-27"),
-            geo: "US",
-        },
-        function (err, results) {
-            if (err) {
-                console.log(err);
-            } else {
-                return res.json({
-                    data: JSON.parse(results),
-                });
-            }
-        }
-    );
-});
-
 app.get("/region", async (req, res) => {
     const response = await googleTrends.interestByRegion({
         keyword: "omnibuslaw",
