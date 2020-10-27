@@ -54,7 +54,22 @@ exports.region = async (req, res) => {
         return errResponse(res, error);
     }
 };
-exports.realtime = async (req, res) => {};
+exports.realtime = async (req, res) => {
+    const data = req.body;
+    googleTrends.realTimeTrends(
+        {
+            geo: data.geo,
+            category: data.category || "all",
+        },
+        function (error, response) {
+            if (error) {
+                return errResponse(res, error);
+            } else {
+                return resultJson(res, response);
+            }
+        }
+    );
+};
 exports.relatedQueries = async (req, res) => {};
 exports.relatedTopics = async (req, res) => {};
 

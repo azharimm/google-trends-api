@@ -17,24 +17,6 @@ app.get("/", (req, res) => {
 
 app.use('/trend', trendRoute);
 
-app.get("/realtime", (req, res) => {
-    googleTrends.realTimeTrends(
-        {
-            geo: "US",
-            category: "all",
-        },
-        function (err, results) {
-            if (err) {
-                console.log(err);
-            } else {
-                return res.json({
-                    data: JSON.parse(results),
-                });
-            }
-        }
-    );
-});
-
 app.get("/related-queries", async (req, res) => {
     const response = await googleTrends.relatedQueries({
         keyword: "Westminster Dog Show",
