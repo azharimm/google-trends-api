@@ -40,7 +40,20 @@ exports.autocomplete = async (req, res) => {
         return errResponse(res, error);
     }
 };
-exports.region = async (req, res) => {};
+exports.region = async (req, res) => {
+    try {
+        const data = req.body;
+        const response = await googleTrends.interestByRegion({
+            keyword: data.keyword,
+            startTime: new Date(data.startTime),
+            endTime: new Date(data.endTime),
+            resolution: data.resolution, //CITY || COUNTRY
+        });
+        return resultJson(res, response);
+    } catch (error) {
+        return errResponse(res, error);
+    }
+};
 exports.realtime = async (req, res) => {};
 exports.relatedQueries = async (req, res) => {};
 exports.relatedTopics = async (req, res) => {};

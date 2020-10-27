@@ -17,18 +17,6 @@ app.get("/", (req, res) => {
 
 app.use('/trend', trendRoute);
 
-app.get("/region", async (req, res) => {
-    const response = await googleTrends.interestByRegion({
-        keyword: "omnibuslaw",
-        startTime: new Date("2020-10-01"),
-        endTime: new Date("2020-10-26"),
-        resolution: "CITY",
-    });
-    return res.json({
-        data: JSON.parse(response),
-    });
-});
-
 app.get("/realtime", (req, res) => {
     googleTrends.realTimeTrends(
         {
