@@ -7,6 +7,7 @@ exports.timeline = async (req, res) => {
             keyword: data.keyword,
             startTime: new Date(data.startTime),
             endTime: new Date(data.endTime),
+            geo: data.geo.toUpperCase()
         });
         return resultJson(res, response);
     } catch (error) {
@@ -18,7 +19,7 @@ exports.daily = async (req, res) => {
     googleTrends.dailyTrends(
         {
             trendDate: new Date(data.date),
-            geo: data.geo,
+            geo: data.geo.toUpperCase(),
         },
         function (error, response) {
             if (error) {
@@ -58,7 +59,7 @@ exports.realtime = async (req, res) => {
     const data = req.body;
     googleTrends.realTimeTrends(
         {
-            geo: data.geo,
+            geo: data.geo.toUpperCase(),
             category: data.category || "all",
         },
         function (error, response) {
@@ -77,7 +78,7 @@ exports.relatedQueries = async (req, res) => {
             keyword: data.keyword,
             startTime: new Date(data.startTime),
             endTime: new Date(data.endTime),
-            geo: data.geo
+            geo: data.geo.toUpperCase()
         });
         return resultJson(res, response);
     } catch (error) {
@@ -91,7 +92,7 @@ exports.relatedTopics = async (req, res) => {
             keyword: data.keyword,
             startTime: new Date(data.startTime),
             endTime: new Date(data.endTime),
-            geo: data.geo
+            geo: data.geo.toUpperCase()
         });
         return resultJson(res, response);
     } catch (error) {
