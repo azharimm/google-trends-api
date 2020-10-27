@@ -1,5 +1,11 @@
 const googleTrends = require("google-trends-api");
 
+exports.index = (req, res) => {
+    return res.json({
+		data: "Google Trend API Wrapper",
+		docs: ""
+	});
+}
 exports.timeline = async (req, res) => {
     try {
         const data = req.body;

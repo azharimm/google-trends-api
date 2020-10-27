@@ -2,6 +2,7 @@ const express = require('express');
 const trendController = require('../controllers/trendController');
 const router = express.Router();
 
+router.get('/', trendController.index);
 router.post('/timeline', trendController.timeline);
 router.post('/daily', trendController.daily);
 router.post('/autocomplete', trendController.autocomplete);
