@@ -17,16 +17,5 @@ app.get("/", (req, res) => {
 
 app.use('/trend', trendRoute);
 
-app.get("/related-topics", async (req, res) => {
-    const response = await googleTrends.relatedTopics({
-		keyword: "Westminster Dog Show",
-		startTime: new Date('2020-10-01'),
-		endTime: new Date('2020-12-26')
-    });
-    return res.json({
-        data: JSON.parse(response),
-    });
-});
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));

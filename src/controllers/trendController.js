@@ -75,13 +75,29 @@ exports.relatedQueries = async (req, res) => {
         const data = req.body;
         const response = await googleTrends.relatedQueries({
             keyword: data.keyword,
+            startTime: new Date(data.startTime),
+            endTime: new Date(data.endTime),
+            geo: data.geo
         });
         return resultJson(res, response);
     } catch (error) {
         return errResponse(res, error);
     }
 };
-exports.relatedTopics = async (req, res) => {};
+exports.relatedTopics = async (req, res) => {
+    try {
+        const data = req.body;
+        const response = await googleTrends.relatedTopics({
+            keyword: data.keyword,
+            startTime: new Date(data.startTime),
+            endTime: new Date(data.endTime),
+            geo: data.geo
+        });
+        return resultJson(res, response);
+    } catch (error) {
+        return errResponse(res, error);
+    }
+};
 
 const resultJson = (res, response) => {
     res.json({
