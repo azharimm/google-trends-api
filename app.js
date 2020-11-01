@@ -5,7 +5,7 @@ const trendRoute = require("./src/routes/trend");
 app.use(express.json());
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "https://azharimm.tk");
     res.setHeader(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -22,6 +22,13 @@ app.get("/", (req, res) => {
 });
 
 app.use("/trend", trendRoute);
+
+app.get("/*", (req, res) => {
+    return res.status(404).json({
+        status: false,
+        message: 'Not found!'
+    });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`App running on port ${PORT}`));
