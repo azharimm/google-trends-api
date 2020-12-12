@@ -16,8 +16,11 @@ app.use((req, res, next) => {
 
 app.get("/", (req, res) => {
     return res.json({
-		data: "Google Trend API Wrapper",
-		docs: "https://github.com/azharimm/google-trends-api"
+        status: true,
+		data: {
+            maintainer: 'Azhari Muhammad M <azhari.marzan@gmail.com>',
+            source: 'https://github.com/azharimm/google-trends-api',
+        }
 	});
 });
 
